@@ -1,23 +1,23 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const burgerToggle = document.getElementById('burgerToggle');
-    const navMenu = document.getElementById('navMenu');
-    const modal = document.getElementById('registrationModal');
-    const scrollTop = document.getElementById('scrollTop');
-    const modalForm = modal?.querySelector('form');
+    const burgerToggle = document.querySelector('#burgerToggle');
+    const navMenu = document.querySelector('#navMenu');
+    const modal = document.querySelector('#registrationModal');
+    const scrollTop = document.querySelector('#scrollTop');
+    const modalForm = modal?.querySelector('#form');
     const mobileQuery = window.matchMedia('(max-width: 768px)');
 
     const setMenuState = (isOpen) => {
-        navMenu?.classList.toggle('is-active', isOpen);
-        burgerToggle?.setAttribute('aria-expanded', String(isOpen));
-        burgerToggle?.setAttribute('aria-label', isOpen ? 'Закрити меню' : 'Відкрити меню');
+        navMenu.classList.toggle('is-active', isOpen);
+        burgerToggle.setAttribute('aria-expanded', String(isOpen));
+        burgerToggle.setAttribute('aria-label', isOpen ? 'Закрити меню' : 'Відкрити меню');
         document.body.classList.toggle('menu-open', isOpen);
     };
 
     const setModalState = (isOpen) => {
-        modal?.classList.toggle('is-open', isOpen);
-        modal?.setAttribute('aria-hidden', String(!isOpen));
+        modal.classList.toggle('is-open', isOpen);
+        modal.setAttribute('aria-hidden', String(!isOpen));
         document.body.classList.toggle('modal-open', isOpen);
 
         if (isOpen) {
