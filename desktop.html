@@ -1,195 +1,214 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>STRM Guitars</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Montserrat+Alternates:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <img src="assets/img.png" class="img" alt="Guitar Background Decor" />
-    
     <header class="header">
-        <h2 class="header-subtitle-symbol header-subtitle">Головна</h2>
-        
-        <div class="header-row">
-            <h2 class="header-subtitle-symbol1">Чому ми</h2>
-            <h2 class="header-subtitle-symbol2">Чому ми</h2>
-        </div>
-        
-        <h2 class="header-subtitle-symbol header-subtitle-symbol3">Про гітари</h2>
-        <button class="header-btn-strm hover-bright">STRM</button>
-        <h2 class="header-subtitle-symbol header-subtitle-symbol4">Каталог</h2>
-        <h2 class="header-subtitle-symbol header-subtitle-symbol5">Відгуки</h2>
-        <button class="header-btn-right hover-zoom">Замовити</button>
+        <button class="burger-button" id="burgerToggle" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="navMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav" id="navMenu" aria-label="Головна навігація">
+            <div class="nav-group nav-group-left">
+                <a href="#top">Головна</a>
+                <a href="#why">Чому ми</a>
+                <a href="#about">Про гітари</a>
+            </div>
+
+            <a class="logo" href="#top" aria-label="STRM головна">STRM</a>
+
+            <div class="nav-group nav-group-right">
+                <a href="#catalog">Каталог</a>
+                <a href="#reviews">Відгуки</a>
+                <button class="outline-button" type="button" data-open-modal>Замовити</button>
+            </div>
+        </nav>
     </header>
-    
-    <div class="hero">
-        <h1 class="hero-title title">
-            <span>“Перестань мріяти. <span class="sub-text">Почни грати.”</span></span>
-        </h1>
-        <h2 class="hero-subtitle">
-            <span>Кожен великий <span class="sub-text">гітарист</span> починав з <span class="sub-text">першого кроку. </span><span class="sub-text">Наші </span>гітари спеціально підібрані для того, щоб шлях від новачка до профі був <span class="sub-text">максимально комфортним</span> та надихаючим. Висока якість збірки, відмінний звук та характер у кожній деталі. <span class="sub-text">Твій час настав.</span></span>
-        </h2>
-    </div>
-    
-    <h2 class="subtitle">Про <span class="sub-text">наші </span>гітари</h2>
-    <p class="text-symbol1">
-        Наші гітари спеціально підібрані для тих, хто не згоден на компроміси у звуці. Ми власноруч відбираємо кожен інструмент, звертаючи увагу на щільність деревини, резонанс корпусу та надійність фурнітури. Незалежно від того, чи шукаєте ви оксамитовий тембр акустики для вечірніх сесій, чи агресивний відгук електрогітари для брудного гранж-саунду — наші інструменти стануть продовженням ваших рук. Це не просто дерево та струни, а професійно відбудовані гітари, що готові до запису в студії або драйву на сцені прямо з коробки. Грай те, що відчуваєш.
-    </p>
-    <h1 class="title-symbol1 title">Категорії товарів</h1>
-    
-    <div class="row1">
-        <div class="card-a card-classic hover-float">
-            <img src="assets/card/card-img1.png" class="card-img input" alt="Класична гітара" />
-            <h2>Класичні</h2>
-        </div>
-        
-        <div class="card-a card-acoustic hover-float">
-            <img src="assets/card/card-img2.png" class="card-img input" alt="Акустична гітара" />
-            <h2>Акустичні</h2>
-        </div>
-    </div>
-    
-    <div class="row2">
-        <div class="card-electro card1 hover-float">
-            <img src="assets/card-electro-img.png" class="card-electro-img input" alt="Електрогітара" />
-            <h2 class="subtitle-symbol">Електро-гітари</h2>
-        </div>
-        
-        <div class="card-bass card1 hover-float">
-            <div class="card-bass-col">
-                <img src="assets/card-electro-img.png" class="card-bass-img1 input" alt="Бас-гітара задній план" />
-                <img src="assets/card-bass-img2.png" class="card-bass-img2 input" alt="Бас-гітара" />
+
+    <main>
+        <section class="hero" id="top">
+            <div class="hero-content">
+                <h1>Перестань мріяти. <span>Почни грати.</span></h1>
+                <p>
+                    Кожен великий <span>гітарист</span> починав з першого кроку.
+                    Наші гітари спеціально підібрані для того, щоб шлях від новачка
+                    до профі був максимально комфортним та надихаючим.
+                </p>
             </div>
-            <h2 class="subtitle-symbol">Бас-гітари</h2>
-        </div>
-    </div>
-    
-    <h1 class="title-symbol2">Відгуки клієнтів</h1>
-    
-    <div class="row3">
-        <div class="card-b hover-float">
-            <p class="card-text-lorem-ipsum">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining 
-            </p>
-            <div class="card-row-bottom">
-                <div class="card-circle"></div>
-                <p class="card-text-symbol">Петро Петренко</p>
+        </section>
+
+        <section class="about" id="about">
+            <img class="about-image" src="assets/img.png">
+            <div class="about-text">
+                <h2>Про <span>наші</span> гітари</h2>
+                <p>
+                    Ми власноруч відбираємо кожен інструмент, звертаючи увагу на щільність
+                    деревини, резонанс корпусу та надійність фурнітури. Це не просто дерево
+                    та струни, а професійно відбудовані гітари, готові до запису або сцени.
+                </p>
             </div>
-        </div>
-        
-        <div class="card-b hover-float">
-            <p class="card-text-lorem-ipsum">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining 
-            </p>
-            <div class="card-row-bottom">
-                <div class="card-circle"></div>
-                <p class="card-text-symbol">Петро Петренко</p>
+        </section>
+
+        <section class="catalog" id="catalog">
+            <h2>Категорії товарів</h2>
+
+            <div class="catalog-grid">
+                <article class="category-card">
+                    <img src="assets/card-img1.png" alt="Класична гітара">
+                    <h3>Класичні</h3>
+                </article>
+                <article class="category-card">
+                    <img src="assets/card-img2.png" alt="Акустична гітара">
+                    <h3>Акустичні</h3>
+                </article>
+                <article class="category-card">
+                    <img src="assets/card-electro-img.png" alt="Електрогітара">
+                    <h3>Електро-гітари</h3>
+                </article>
+                <article class="category-card">
+                    <img src="assets/card-bass-img2.png" alt="Бас-гітара">
+                    <h3>Бас-гітари</h3>
+                </article>
             </div>
-        </div>
-        
-        <div class="card-b hover-float">
-            <p class="card-text-lorem-ipsum">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining 
-            </p>
-            <div class="card-row-bottom">
-                <div class="card-circle"></div>
-                <p class="card-text-symbol">Петро Петренко</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col1 section">
-        <h2 class="subtitle-why-heading">
-            Чому обирають <span class="sub-text-symbol">нас</span>
-        </h2>
-        
-        <div class="row-bottom">
-            <div class="col-left">
-                <img src="assets/group.png" class="group group1" alt="Icon" />
-                <div class="group2">
-                    <p class="text-symbol-a">Ручний відбір</p>
-                    <p class="text-symbol-b group-text">Кожна гітара перевірена</p>
-                    <p class="text-symbol-b group-text-symbol1">нашими майстрами</p>
-                    <p class="text-symbol-b">перед відправкою</p>
+        </section>
+
+        <section class="reviews" id="reviews">
+            <h2>Відгуки клієнтів</h2>
+
+            <div class="swiper reviews-swiper">
+                <div class="swiper-wrapper">
+                    <article class="swiper-slide review-card">
+                        <p>Інструмент приїхав відбудований, звучить чисто й не потребував додаткового сервісу.</p>
+                        <div class="review-author">
+                            <span></span>
+                            <strong>Петро Петренко</strong>
+                        </div>
+                    </article>
+                    <article class="swiper-slide review-card">
+                        <p>Допомогли вибрати електрогітару під мій стиль і пояснили різницю між моделями просто.</p>
+                        <div class="review-author">
+                            <span></span>
+                            <strong>Олена Кравчук</strong>
+                        </div>
+                    </article>
+                    <article class="swiper-slide review-card">
+                        <p>Бас прийшов швидко, упакування надійне. З коробки все грало рівно.</p>
+                        <div class="review-author">
+                            <span></span>
+                            <strong>Максим Шевченко</strong>
+                        </div>
+                    </article>
+                    <article class="swiper-slide review-card">
+                        <p>Для першої гітари отримала саме те, що треба: нормальний звук і комфортний гриф.</p>
+                        <div class="review-author">
+                            <span></span>
+                            <strong>Ірина Мельник</strong>
+                        </div>
+                    </article>
                 </div>
+
+                <div class="swiper-pagination"></div>
             </div>
-            
-            <div class="group3">
-                <img src="assets/group-group.png" class="group-group" alt="Icon" />
-                <p class="text-symbol-a group-text-symbol3">Швидка доставка</p>
-                <p class="text-symbol-b group-text-symbol4">Доставка по Україні</p>
-                <p class="text-symbol-b">за 1-3 дні</p>
+        </section>
+
+        <section class="why" id="why">
+            <h2>Чому обирають <span>нас</span></h2>
+
+            <div class="features">
+                <article>
+                    <span class="feature-icon"><img src="assets/group.png"></span>
+                    <h3>Ручний відбір</h3>
+                    <p>Кожна гітара перевірена нашими майстрами перед відправкою.</p>
+                </article>
+                <article>
+                    <span class="feature-icon"><img src="assets/group-group.png"></span>
+                    <h3>Швидка доставка</h3>
+                    <p>Доставка по Україні за 1-3 дні.</p>
+                </article>
+                <article>
+                    <span class="feature-icon"><img src="assets/column-group1.png"></span>
+                    <h3>Гарантія 1 рік</h3>
+                    <p>Офіційна гарантія та сервісна підтримка.</p>
+                </article>
+                <article>
+                    <span class="feature-icon"><img src="assets/column-group2.png"></span>
+                    <h3>Консультація</h3>
+                    <p>Безкоштовна допомога у виборі інструменту.</p>
+                </article>
             </div>
-            
-            <div class="column col2">
-                <img src="assets/column/column-group1.png" class="group column-group1" alt="Icon" />
-                <div class="column-group2">
-                    <p class="text-symbol-a">Гарантія 1 рік</p>
-                    <p class="text-symbol-b column-text-symbol">Офіційна гарантія</p>
-                    <p class="text-symbol-b">та сервісна підтримка</p>
-                </div>
-            </div>
-            
-            <div class="column col-right">
-                <img src="assets/column/column-group2.png" class="group column-group1" alt="Icon" />
-                <div class="column-group2">
-                    <p class="text-symbol-a">Консультація</p>
-                    <p class="text-symbol-b column-text-symbol">Безкоштовна допомога</p>
-                    <p class="text-symbol-b">у виборі інструменту</p>
-                </div>
-            </div>
+        </section>
+
+        <section class="newsletter">
+            <h2>Будь першим серед знавців</h2>
+            <p>Підпишись та отримай -10% на перше замовлення</p>
+            <form>
+                <label class="sr-only" for="newsletterEmail">Email</label>
+                <input id="newsletterEmail" type="email" placeholder="Введи свій email">
+                <button type="submit">Підписатись</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div>
+            <h2>STRM</h2>
+            <p>Магазин гітар та обладнання</p>
         </div>
-    </div>
-    
-    <section class="newsletter">
-        <h2 class="newsletter-subtitle">Будь першим серед знавців</h2>
-        <p class="newsletter-text">Підпишись та отримай -10% на перше замовлення</p>
-        
-        <div class="input-group-bottom">
-            <input class="input-group-bottom-symbol" value="Введи свій email..." />
-            <button class="input-group-bottom-btn hover-bright">Підписатись</button>
+        <div>
+            <h3>Каталог</h3>
+            <a href="#catalog">Класичні гітари</a>
+            <a href="#catalog">Акустичні гітари</a>
+            <a href="#catalog">Електро-гітари</a>
+            <a href="#catalog">Бас-гітари</a>
         </div>
-    </section>
-    
-    <footer class="footer section">
-        <div class="footer-row-top">
-            <div class="footer-col-left">
-                <h2 class="footer-subtitle">STRM</h2>
-                <p class="footer-text-symbol1">Магазин гітар та обладнання</p>
-            </div>
-            
-            <div class="footer-symbol1">
-                <p class="footer-text-symbol">Каталог</p>
-                <p class="text-symbol-b footer-text-symbol2">Класичні гітари</p>
-                <p class="text-symbol-b">Акустичні гітари</p>
-                <p class="text-symbol-b">Електро-гітари</p>
-                <p class="text-symbol-b">Бас-гітари</p>
-            </div>
-            
-            <div class="footer-symbol2">
-                <p class="footer-text-symbol">Контакти</p>
-                <p class="text-symbol-b footer-text-plus">+38 (067) 000-00-00</p>
-                <p class="text-symbol-b">info@strm.ua</p>
-                <p class="text-symbol-b footer-text-symbol6">Пн–Сб: 10:00–19:00</p>
-            </div>
-            
-            <div class="circle-symbol circle-symbol1">
-                <img src="assets/circle-symbol/circle-symbol-instagram.png" class="circle-symbol-send circle-symbol-instagram" alt="Instagram" />
-            </div>
-            
-            <div class="circle-symbol circle-symbol2">
-                <img src="assets/circle-symbol/circle-symbol-facebook.png" class="circle-symbol-send circle-symbol-instagram" alt="Facebook" />
-            </div>
-            
-            <div class="circle-symbol circle-symbol3">
-                <img src="assets/circle-symbol/circle-symbol-send.png" class="circle-symbol-send circle-symbol-instagram" alt="Telegram" />
-            </div>
+        <div>
+            <h3>Контакти</h3>
+            <p>+38 (067) 000-00-00</p>
+            <p>info@strm.ua</p>
+            <p>Пн-Сб: 10:00-19:00</p>
         </div>
-        
-        <div class="footer-line"></div>
     </footer>
+
+    <div class="modal-backdrop" id="registrationModal" aria-hidden="true">
+        <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <button class="modal-close" type="button" aria-label="Закрити" data-close-modal></button>
+            <h2 id="modalTitle">Замовити консультацію</h2>
+
+            <form class="modal-form">
+                <label>
+                    Ім'я
+                    <input name="name" autocomplete="name" required>
+                </label>
+                <label>
+                    Email
+                    <input type="email" name="email" autocomplete="email" required>
+                </label>
+                <label>
+                    Телефон
+                    <input type="tel" name="phone" autocomplete="tel" required>
+                </label>
+                <label>
+                    Коментар
+                    <textarea name="message" rows="4"></textarea>
+                </label>
+                <button type="submit">Надіслати</button>
+            </form>
+        </section>
+    </div>
+
+    <button class="scroll-top" id="scrollTop" type="button" aria-label="До початку">↑</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
