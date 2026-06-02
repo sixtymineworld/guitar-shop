@@ -1,93 +1,120 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const burgerToggle = document.querySelector('#burgerToggle');
-    const navMenu = document.querySelector('#navMenu');
+    const burger = document.querySelector('#burgerToggle');
+    const nav = document.querySelector('#navMenu');
     const modal = document.querySelector('#registrationModal');
     const scrollTop = document.querySelector('#scrollTop');
-    const modalForm = modal?.querySelector('#form');
-    const mobileQuery = window.matchMedia('(max-width: 768px)');
+    const reviewsSwiper = document.querySelector('.reviews-swiper');
+    const modalForm = document.querySelector('.modal-form');
+    const newsletterForm = document.querySelector('.newsletter form');
+    const cookiesBanner = document.querySelector('#cookiesBanner');
+    const cookiesForm = document.querySelector('#cookiesForm');
+    const cookiesAcceptAll = document.querySelector('#cookiesAcceptAll');
+    const cookiesRejectAll = document.querySelector('#cookiesRejectAll');
+    const cookiesSettings = document.querySelector('#cookiesSettings');
 
-    const setMenuState = (isOpen) => {
-        navMenu.classList.toggle('is-active', isOpen);
-        burgerToggle.setAttribute('aria-expanded', String(isOpen));
-        burgerToggle.setAttribute('aria-label', isOpen ? 'Закрити меню' : 'Відкрити меню');
+    const toggleMenu = (isOpen) => {
+        if (nav) {
+            nav.classList.toggle('is-active', isOpen);
+        }
         document.body.classList.toggle('menu-open', isOpen);
     };
 
-    const setModalState = (isOpen) => {
-        modal.classList.toggle('is-open', isOpen);
-        modal.setAttribute('aria-hidden', String(!isOpen));
+    const toggleModal = (isOpen) => {
+        if (modal) {
+            modal.classList.toggle('is-open', isOpen);
+        }
         document.body.classList.toggle('modal-open', isOpen);
-
         if (isOpen) {
-            setMenuState(false);
-            window.requestAnimationFrame(() => modal?.querySelector('input')?.focus());
+            toggleMenu(false);
         }
     };
 
-    burgerToggle?.addEventListener('click', () => {
-        setMenuState(!navMenu?.classList.contains('is-active'));
+    if (localStorage.getItem('isAccepted') !== 'true') {
+        cookiesBanner.style.display = 'flex';
+    }
+
+    cookiesAcceptAll.addEventListener('click', () => {
+        localStorage.setItem('isAccepted', 'true');
+        cookiesBanner.style.display = 'none';
     });
 
-    navMenu?.addEventListener('click', (event) => {
-        const target = event.target.closest('a, button');
-
-        if (!target) {
-            return;
-        }
-
-        if (target.matches('[data-open-modal]')) {
-            setModalState(true);
-            return;
-        }
-
-        if (target.matches('a') && mobileQuery.matches) {
-            setMenuState(false);
-        }
+    cookiesRejectAll.addEventListener('click', () => {
+        localStorage.setItem('isAccepted', 'false');
+        cookiesBanner.style.display = 'none';
     });
 
-    document.querySelectorAll('[data-open-modal]').forEach((button) => {
-        button.addEventListener('click', () => setModalState(true));
+    if (burger) {
+        burger.addEventListener('click', () => {
+            const isActive = nav && nav.classList.contains('is-active');
+            toggleMenu(!isActive);
+        });
+    }
+
+    if (nav) {
+        nav.addEventListener('click', (e) => {
+            const target = e.target.closest('a, button');
+            if (!target) return;
+
+            if (target.dataset.openModal) {
+                toggleModal(true);
+            } 
+            else if (target.tagName === 'A' && window.innerWidth <= 768) {
+                toggleMenu(false);
+            }
+        });
+    }
+
+    document.querySelectorAll('[data-open-modal]').forEach((btn) => {
+        btn.addEventListener('click', () => toggleModal(true));
     });
 
-    document.querySelectorAll('[data-close-modal]').forEach((button) => {
-        button.addEventListener('click', () => setModalState(false));
+    document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+        btn.addEventListener('click', () => toggleModal(false));
     });
 
-    modal?.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            setModalState(false);
-        }
-    });
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                toggleModal(false);
+            }
+        });
+    }
 
-    modalForm?.addEventListener('submit', (event) => {
-        event.preventDefault();
-        modalForm.reset();
-        setModalState(false);
-    });
+    if (modalForm) {
+        modalForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            modalForm.reset();
+            toggleModal(false);
+        });
+    }
 
-    document.querySelector('.newsletter form')?.addEventListener('submit', (event) => {
-        event.preventDefault();
-        event.currentTarget.reset();
-    });
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            newsletterForm.reset();
+        });
+    }
 
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-            setMenuState(false);
-            setModalState(false);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            toggleMenu(false);
+            toggleModal(false);
         }
     });
 
     window.addEventListener('scroll', () => {
-        scrollTop?.classList.toggle('is-visible', window.scrollY > 300);
+        if (scrollTop) {
+            scrollTop.classList.toggle('is-visible', window.scrollY > 300);
+        }
     }, { passive: true });
 
-    scrollTop?.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    const reviewsSwiper = document.querySelector('.reviews-swiper');
+    if (scrollTop) {
+        scrollTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
     if (reviewsSwiper && typeof Swiper !== 'undefined') {
         new Swiper(reviewsSwiper, {
@@ -99,17 +126,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 clickable: true,
             },
             breakpoints: {
-                768: {
-                    slidesPerView: 2,
-                    spaceBetween: 28,
-                },
-                1083: {
-                    slidesPerView: 3,
-                    spaceBetween: 32,
-                },
+                768: { slidesPerView: 2, spaceBetween: 28 },
+                1083: { slidesPerView: 3, spaceBetween: 32 },
             },
         });
     } else {
-        reviewsSwiper?.classList.add('is-fallback');
+        if (reviewsSwiper) {
+            reviewsSwiper.classList.add('is-fallback');
+        }
     }
+
+    if (cookiesForm) {
+        updateCookieForm();
+    }
+    showCookiesBanner();
 });

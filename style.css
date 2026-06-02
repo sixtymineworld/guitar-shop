@@ -115,13 +115,7 @@ button {
     font-size: 18px;
     font-weight: 700;
 }
-.nav-group-left {
-    border-right: 2px solid var(--accent);
-}
-
-.nav-group-right {
-    border-left: 2px solid var(--accent);
-}
+    /* § */
 
 .nav a,
 .outline-button {
@@ -133,16 +127,19 @@ button {
 }
 
 .outline-button {
-    padding: 10px 22px;
-    color: var(--accent-dark);
-    background: transparent;
+    padding: 14px 32px;              
+    color: white;                  
+    background: var(--accent-dark);  
     border: 2px solid var(--accent-dark);
-    border-radius: 17px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 180ms ease;
 }
 
 .outline-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(232, 160, 32, 0.22);
+    background: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(232, 160, 32, 0.3);
 }
 
 .burger-button {
@@ -211,24 +208,26 @@ button {
     /* Гнучка колонка для фото та текстова колонка */
     grid-template-columns: 1fr 1.1fr; 
     align-items: center;
-    gap: clamp(40px, 8vw, 100px); /* Адаптивний проміжок між контентом */
+    gap: clamp(40px, 8vw, 100px);
     padding: 0;
 }
 
 .about-image {
     width: 100%;
-    aspect-ratio: 1 / 1; /* Робимо картинку квадратною як на макеті */
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     border: 2px solid var(--accent);
     border-radius: 20px;
+    max-height: 647px;
+    max-width: 516px;
 }
 
 .about-content {
-    text-align: left; /* Вирівнювання тексту по лівому краю */
+    text-align: left;
 }
 
 .about h2 {
-    color: var(--ink); /* Колір заголовка як у Figma */
+    color: var(--ink);
     font-size: clamp(32px, 5vw, 64px);
     font-weight: 600;
     line-height: 1.1;
@@ -236,11 +235,11 @@ button {
 }
 
 .about h2 span {
-    color: var(--accent); /* Помаранчеве слово "наші" */
+    color: var(--accent);
 }
 
 .about p {
-    margin: 0;
+    margin: 5;
     font-size: clamp(16px, 1.2vw, 18px);
     font-weight: 400;
     line-height: 1.6;
@@ -605,6 +604,84 @@ button {
     transform: translateY(0);
 }
 
+.cookies-banner {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translate(-50%, 100px);
+    z-index: 99;
+    width: min(540px, calc(100% - 32px));
+    
+    padding: 20px 24px;
+    background: rgba(57, 34, 3, 0.95); /* Твій колір --ink з прозорістю */
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--accent);
+    border-radius: 16px;
+    box-shadow: 0 16px 40px rgba(42, 24, 0, 0.3);
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 400ms ease, 
+                visibility 400ms ease;
+}
+
+.cookies-banner.is-visible {
+    transform: translate(-50%, 0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.cookies-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+}
+
+.cookies-content p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #f7ebd9;
+}
+
+.cookies-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.cookies-buttons button {
+    flex: 1;
+    min-height: 44px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 180ms ease;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #f7ebd9;
+    border: 1px solid rgba(254, 164, 48, 0.4);
+}
+
+.btn-secondary:hover {
+    background: rgba(254, 164, 48, 0.1);
+    border-color: var(--accent);
+}
+
 @media (max-width: 1024px) {
     .nav {
         grid-template-columns: 1fr 200px 1fr;
@@ -634,6 +711,11 @@ button {
 }
 
 @media (max-width: 768px) {
+    .cookies-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
     .header {
         position: absolute;
         inset: 0 0 auto;
@@ -713,8 +795,9 @@ button {
     }
 
     .outline-button {
-        width: 145px;
-        margin: 22px auto 0;
+        width: auto;
+        padding: 12px 28px;
+        min-width: 120px;
     }
 
     .hero {
@@ -747,7 +830,7 @@ button {
     }
     
     .about-image {
-        max-width: 500px;
+        max-width: 647px;
         margin: 0 auto;
     }
     
