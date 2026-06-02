@@ -38,12 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
             cookiesBanner.classList.add('is-visible');
         }
 
-        cookiesAcceptAll?.addEventListener('click', () => {
+        cookiesAcceptAll.addEventListener('click', () => {
             localStorage.setItem('isAccepted', 'true');
             cookiesBanner.classList.remove('is-visible');
         });
 
-        cookiesRejectAll?.addEventListener('click', () => {
+        cookiesRejectAll.addEventListener('click', () => {
             localStorage.setItem('isAccepted', 'false');
             cookiesBanner.classList.remove('is-visible');
         });
