@@ -31,19 +31,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    if (localStorage.getItem('isAccepted') !== 'true') {
-        cookiesBanner.style.display = 'flex';
+    if (cookiesBanner) {
+        const consent = localStorage.getItem('isAccepted');
+
+        if (consent === null) {
+            cookiesBanner.classList.add('is-visible');
+        }
+
+        cookiesAcceptAll?.addEventListener('click', () => {
+            localStorage.setItem('isAccepted', 'true');
+            cookiesBanner.classList.remove('is-visible');
+        });
+
+        cookiesRejectAll?.addEventListener('click', () => {
+            localStorage.setItem('isAccepted', 'false');
+            cookiesBanner.classList.remove('is-visible');
+        });
     }
-
-    cookiesAcceptAll.addEventListener('click', () => {
-        localStorage.setItem('isAccepted', 'true');
-        cookiesBanner.style.display = 'none';
-    });
-
-    cookiesRejectAll.addEventListener('click', () => {
-        localStorage.setItem('isAccepted', 'false');
-        cookiesBanner.style.display = 'none';
-    });
 
     if (burger) {
         burger.addEventListener('click', () => {
@@ -135,9 +139,4 @@ document.addEventListener('DOMContentLoaded', () => {
             reviewsSwiper.classList.add('is-fallback');
         }
     }
-
-    if (cookiesForm) {
-        updateCookieForm();
-    }
-    showCookiesBanner();
 });
